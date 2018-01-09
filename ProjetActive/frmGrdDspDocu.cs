@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace ProjetActive
 {
-    public partial class Form1 : Form
+    public partial class frmGrdDspDocu : Form
     {
-        public Form1()
+        public frmGrdDspDocu()
         {
             InitializeComponent();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblListe_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,14 +45,163 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Client.cs" />
+    <Compile Include="DonneesClient.cs" />
+    <Compile Include="frmAccu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmAccu.Designer.cs">
+      <DependentUpon>frmAccu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClie.Designer.cs">
+      <DependentUpon>frmClie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelClie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelClie.Designer.cs">
+      <DependentUpon>frmDelClie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelDocu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelDocu.Designer.cs">
+      <DependentUpon>frmDelDocu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDelInte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDelInte.Designer.cs">
+      <DependentUpon>frmDelInte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocu.Designer.cs">
+      <DependentUpon>frmDocu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrdDspClie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGrdDspClie.Designer.cs">
+      <DependentUpon>frmGrdDspClie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInte.Designer.cs">
+      <DependentUpon>frmInte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrdDspDocu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGrdDspDocu.Designer.cs">
+      <DependentUpon>frmGrdDspDocu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGrdDspInte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGrdDspInte.Designer.cs">
+      <DependentUpon>frmGrdDspInte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogIn.Designer.cs">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewClie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewClie.Designer.cs">
+      <DependentUpon>frmNewClie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewDocu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewDocu.Designer.cs">
+      <DependentUpon>frmNewDocu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewInte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewInte.Designer.cs">
+      <DependentUpon>frmNewInte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdClie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdClie.Designer.cs">
+      <DependentUpon>frmUpdClie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdDocu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdDocu.Designer.cs">
+      <DependentUpon>frmUpdDocu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdInte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdInte.Designer.cs">
+      <DependentUpon>frmUpdInte.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAccu.resx">
+      <DependentUpon>frmAccu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClie.resx">
+      <DependentUpon>frmClie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelClie.resx">
+      <DependentUpon>frmDelClie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelDocu.resx">
+      <DependentUpon>frmDelDocu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDelInte.resx">
+      <DependentUpon>frmDelInte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocu.resx">
+      <DependentUpon>frmDocu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGrdDspClie.resx">
+      <DependentUpon>frmGrdDspClie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInte.resx">
+      <DependentUpon>frmInte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGrdDspDocu.resx">
+      <DependentUpon>frmGrdDspDocu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGrdDspInte.resx">
+      <DependentUpon>frmGrdDspInte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogIn.resx">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewClie.resx">
+      <DependentUpon>frmNewClie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewDocu.resx">
+      <DependentUpon>frmNewDocu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewInte.resx">
+      <DependentUpon>frmNewInte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdClie.resx">
+      <DependentUpon>frmUpdClie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdDocu.resx">
+      <DependentUpon>frmUpdDocu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdInte.resx">
+      <DependentUpon>frmUpdInte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
