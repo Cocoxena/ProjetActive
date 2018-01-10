@@ -13,6 +13,10 @@ namespace ProjetActive
     /// </summary>
     public class Client
     {
+        // nombre de clients enregistrés dans la liste
+        public static Int32 NClie;
+
+
         // numéro du client
         // s'obtiendra une fois la fiche créée
         // numéro à 6 chiffres commençant par 000001
@@ -50,6 +54,9 @@ namespace ProjetActive
         // nature du client (principale, secondaire ou ancienne) 
         private String nature;
 
+        // liste de contacts du client
+        private String ListeContacts;
+
         /// <summary>
         /// Propriétés des données rendues publiques 
         /// </summary>
@@ -70,7 +77,45 @@ namespace ProjetActive
         public string Adresse { get => adresse; set => adresse = value; }
         
         public string Ville { get => ville; set => ville = value; }
-        public string Telephone { get => telephone; set => telephone = value; }
+
+        public string Telephone
+        {
+            get { return telephone; }
+
+            set
+            {
+                // le téléphone doit être composé de 10 chiffres             
+                Int32 i;                      // variable de boucle             
+                Boolean erreur = false;        // indicateur erreur            
+                if (value.Length == 10)        // 10 caractères attendus : OK ==> contrôler un à un             
+                {
+                    for (i = 0; i < value.Length; i++)       // contrôle chiffres par boucle                 
+                    {
+                        if (!(Char.IsDigit(value[i])))
+                        { erreur = true; }
+
+                    } // fin de boucle controle chiffres                
+                    if (erreur)                             // on a rencontré un non-chiffre                 
+                    {
+                        System.Windows.Forms.MessageBox.Show(value.ToString() + "\n" + "n'est pas un numéro de téléphone valide : uniquement des chiffres", "Erreur Classe MStagiaire", System.Windows.Forms.MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        telephone = value;       // tout est bon, on affecte la propriété 
+                    }
+                }
+                else // il n'y a pas 10 caractères 
+                {
+                    // première solution par simple messagebox         
+                    System.Windows.Forms.MessageBox.Show(value.ToString() + "\n" + "n'est pas un numéro de téléphone valide : 10 chiffres, pas plus, pas moins", "Erreur Classe MStagiaire", System.Windows.Forms.MessageBoxButtons.OK);
+                }
+
+            }
+
+        }
+
+
+
         public decimal CA { get => cA; set => cA = value; }
         public int Effectif { get => effectif; set => effectif = value; }
         public string Nature { get => nature; set => nature = value; }
@@ -111,10 +156,7 @@ namespace ProjetActive
             }
         }
 
-        /// <summary>
-        /// Constructeur de la classe Client sous forme de liste
-        /// </summary>
-
+        
         
 
             

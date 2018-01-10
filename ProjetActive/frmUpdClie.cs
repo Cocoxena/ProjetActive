@@ -29,13 +29,20 @@ namespace ProjetActive
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult reponse;
+            reponse = MessageBox.Show("Avez-vous enregistrer les modifications?", "Enregistrer?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (reponse == DialogResult.Yes)
+            {
+                MessageBox.Show("Modifications sauvegardées bien enregistrées.");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Vous perdrez les données non enregistrées.");
+                this.Close();
+            }
         }
-
-        private void btnEnregistrer_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         /// <summary>         
         /// constructeur adapté : mémorise le stagiaire à traiter 
@@ -92,13 +99,47 @@ namespace ProjetActive
                     this.rbtAncienne.Text = unClient.Nature;
                 }
             }
+        }
 
 
+        private void btnEnregistrer_Click(object sender, EventArgs e)
+        {
+            // fermeture de la boite de dialogue avec sauvegarde des données modifiées    
+            Int32 iClie = DonneesClient.ArrayStag.IndexOf(leClient);
+            ((Client)DonneesClient.ArrayStag[iClie]).IdClient = Int32.Parse(this.txtNumero.Text.Trim());
+            ((Client)DonneesClient.ArrayStag[iClie]).RaisonSociale = this.txtRaison.Text;
+            if (rbtPrive.Checked)
+            {
+                ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPrive.Text;
+            }
+            else
+            {
+                ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPublic.Text;
+            }
+            ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPrive.Text;
+            ((Client)DonneesClient.ArrayStag[iClie]).Activite = this.txtDomaine.Text;
+            ((Client)DonneesClient.ArrayStag[iClie]).Adresse = this.txtAdresse.Text;
+            ((Client)DonneesClient.ArrayStag[iClie]).CodePostal = this.txtCP.Text;
+            ((Client)DonneesClient.ArrayStag[iClie]).Ville = this.txtVille.Text;
+            ((Client)DonneesClient.ArrayStag[iClie]).CA = Int32.Parse(this.txtCA.Text.Trim());
+            ((Client)DonneesClient.ArrayStag[iClie]).Effectif = Int32.Parse(this.txtEffectif.Text.Trim());
 
-            
-
-
-
+            if (rbtPrincipale.Checked)
+            {
+                ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtPrincipale.Text;
+            }
+            else
+            {
+                if (rbtSecondaire.Checked)
+                {
+                    ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtSecondaire.Text;
+                }
+                else
+                {
+                    ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtAncienne.Text;
+                }
+                this.DialogResult = DialogResult.OK;
+            }
         }
     }
 }

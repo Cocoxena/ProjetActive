@@ -65,7 +65,7 @@
             // 
             // txtCalcul
             // 
-            this.txtCalcul.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+           
             // 
             // txtEffectif
             // 

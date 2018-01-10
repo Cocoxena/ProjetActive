@@ -46,8 +46,6 @@
             this.txtVille = new System.Windows.Forms.TextBox();
             this.lblCPVille = new System.Windows.Forms.Label();
             this.gbxChiffres = new System.Windows.Forms.GroupBox();
-            this.txtCalcul = new System.Windows.Forms.TextBox();
-            this.lblCAindiv = new System.Windows.Forms.Label();
             this.txtEffectif = new System.Windows.Forms.TextBox();
             this.txtCA = new System.Windows.Forms.TextBox();
             this.lblEffectif = new System.Windows.Forms.Label();
@@ -227,8 +225,6 @@
             // 
             // gbxChiffres
             // 
-            this.gbxChiffres.Controls.Add(this.txtCalcul);
-            this.gbxChiffres.Controls.Add(this.lblCAindiv);
             this.gbxChiffres.Controls.Add(this.txtEffectif);
             this.gbxChiffres.Controls.Add(this.txtCA);
             this.gbxChiffres.Controls.Add(this.lblEffectif);
@@ -239,22 +235,6 @@
             this.gbxChiffres.TabIndex = 19;
             this.gbxChiffres.TabStop = false;
             this.gbxChiffres.Text = "Client en chiffres";
-            // 
-            // txtCalcul
-            // 
-            this.txtCalcul.Location = new System.Drawing.Point(435, 63);
-            this.txtCalcul.Name = "txtCalcul";
-            this.txtCalcul.Size = new System.Drawing.Size(106, 20);
-            this.txtCalcul.TabIndex = 6;
-            // 
-            // lblCAindiv
-            // 
-            this.lblCAindiv.AutoSize = true;
-            this.lblCAindiv.Location = new System.Drawing.Point(346, 66);
-            this.lblCAindiv.Name = "lblCAindiv";
-            this.lblCAindiv.Size = new System.Drawing.Size(65, 13);
-            this.lblCAindiv.TabIndex = 5;
-            this.lblCAindiv.Text = "CA/employé";
             // 
             // txtEffectif
             // 
@@ -366,7 +346,6 @@
         private System.Windows.Forms.Label lblAdresse;
         private System.Windows.Forms.Label lblTelephone;
         private System.Windows.Forms.Label lblCPVille;
-        private System.Windows.Forms.Label lblCAindiv;
         private System.Windows.Forms.Label lblEffectif;
         private System.Windows.Forms.Label lblCA;
         protected System.Windows.Forms.TextBox txtNumero;
@@ -378,7 +357,6 @@
         protected System.Windows.Forms.GroupBox gbxCoordonnees;
         protected System.Windows.Forms.TextBox txtVille;
         protected System.Windows.Forms.GroupBox gbxChiffres;
-        protected System.Windows.Forms.TextBox txtCalcul;
         protected System.Windows.Forms.TextBox txtEffectif;
         protected System.Windows.Forms.TextBox txtCA;
         protected System.Windows.Forms.GroupBox gbxNature;

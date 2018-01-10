@@ -31,10 +31,10 @@
             this.gbxRecherche = new System.Windows.Forms.GroupBox();
             this.btnTous = new System.Windows.Forms.Button();
             this.btnRechercher = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMotCle = new System.Windows.Forms.TextBox();
+            this.txtDomaine = new System.Windows.Forms.TextBox();
             this.lblMotCle = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.lblDomaine = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.grdClie = new System.Windows.Forms.DataGridView();
@@ -51,10 +51,10 @@
             // 
             this.gbxRecherche.Controls.Add(this.btnTous);
             this.gbxRecherche.Controls.Add(this.btnRechercher);
-            this.gbxRecherche.Controls.Add(this.textBox3);
-            this.gbxRecherche.Controls.Add(this.textBox2);
+            this.gbxRecherche.Controls.Add(this.txtMotCle);
+            this.gbxRecherche.Controls.Add(this.txtDomaine);
             this.gbxRecherche.Controls.Add(this.lblMotCle);
-            this.gbxRecherche.Controls.Add(this.textBox1);
+            this.gbxRecherche.Controls.Add(this.txtNom);
             this.gbxRecherche.Controls.Add(this.lblDomaine);
             this.gbxRecherche.Controls.Add(this.lblNom);
             this.gbxRecherche.Location = new System.Drawing.Point(28, 33);
@@ -82,20 +82,21 @@
             this.btnRechercher.TabIndex = 7;
             this.btnRechercher.Text = "Rechercher";
             this.btnRechercher.UseVisualStyleBackColor = true;
+            this.btnRechercher.Click += new System.EventHandler(this.btnRechercher_Click);
             // 
-            // textBox3
+            // txtMotCle
             // 
-            this.textBox3.Location = new System.Drawing.Point(158, 102);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(397, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtMotCle.Location = new System.Drawing.Point(158, 102);
+            this.txtMotCle.Name = "txtMotCle";
+            this.txtMotCle.Size = new System.Drawing.Size(397, 20);
+            this.txtMotCle.TabIndex = 5;
             // 
-            // textBox2
+            // txtDomaine
             // 
-            this.textBox2.Location = new System.Drawing.Point(158, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(397, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtDomaine.Location = new System.Drawing.Point(158, 65);
+            this.txtDomaine.Name = "txtDomaine";
+            this.txtDomaine.Size = new System.Drawing.Size(397, 20);
+            this.txtDomaine.TabIndex = 4;
             // 
             // lblMotCle
             // 
@@ -106,12 +107,12 @@
             this.lblMotCle.TabIndex = 3;
             this.lblMotCle.Text = "par mot clé :";
             // 
-            // textBox1
+            // txtNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(158, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(397, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtNom.Location = new System.Drawing.Point(158, 28);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(397, 20);
+            this.txtNom.TabIndex = 2;
             // 
             // lblDomaine
             // 
@@ -180,6 +181,7 @@
             this.btnSupprimer.TabIndex = 7;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // btnModifier
             // 
@@ -189,6 +191,7 @@
             this.btnModifier.TabIndex = 8;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // frmGrdDspClie
             // 
@@ -216,10 +219,10 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gbxRecherche;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMotCle;
+        private System.Windows.Forms.TextBox txtDomaine;
         private System.Windows.Forms.Label lblMotCle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label lblDomaine;
         private System.Windows.Forms.Label lblNom;
         private System.Windows.Forms.DataGridView grdClie;

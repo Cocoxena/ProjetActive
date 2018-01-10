@@ -15,6 +15,7 @@ namespace ProjetActive
         public frmGrdDspClie()
         {
             InitializeComponent();
+            listeClients();
         }
 
         private void lblAffichage_Click(object sender, EventArgs e)
@@ -24,27 +25,28 @@ namespace ProjetActive
 
         private void btnTous_Click(object sender, EventArgs e)
         {
-            afficheClients();
+            this.txtNom.Text = null;
+            this.txtDomaine.Text = null;
+            this.txtMotCle.Text = null;
+            ((DataView)(this.grdClie.DataSource)).RowFilter = null;
         }
 
         /// <summary>        
         /// bouton Ajouter : instancier un form pour saisir un nouveau client frmNewClie
         /// puis réafficher la datagridview 
-        /// 
-             /// (+ activation des boutons Supprimer et Rechercher)???????
-        /// 
         /// </summary>         
         /// <param name="sender"></param>     
         /// <param name="e"></param> 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            this.Hide();
             // instancie le frmNewClie pour la saisie d'un nouveau client et l'affiche en modal
             frmNewClie frmNew = new frmNewClie();
             // sortie de la saisie par OK
             if (frmNew.ShowDialog() == DialogResult.OK)
             {
-                //régénère l'afichage de la datagridview 
-                afficheClients();
+                //régénère l'affichage de la datagridview 
+                listeClients();
             }
         }
 
@@ -57,7 +59,7 @@ namespace ProjetActive
         /// rétablit la source de données de la dataGridView  
         /// et rafraîchit son affichage         
         /// </summary> 
-        private void afficheClients()
+        private void listeClients()
         {
             // datatable: pour recopier les clients stockés en collection
             // à relier au datagridview pour personnaliser l'affichage
@@ -67,7 +69,7 @@ namespace ProjetActive
 
             // ajout à la datatable de 3 colonnes personnalisées 
             dt.Columns.Add(new DataColumn("Numéro", typeof(System.Int32)));
-            dt.Columns.Add(new DataColumn("Raison Sociale", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Nom", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Type", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Domaine activité", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Adresse", typeof(System.String)));
@@ -136,7 +138,7 @@ namespace ProjetActive
             // ouvrir la feuille détail en y affichant              
             // le client correspondant à la ligne double-cliquée 
 
-            Int32 iClie;        // rang du client dans le tableau 
+            Int32 iClie;        // rang du client dans la liste 
 
             // récupérer indice du client cliqué en DataGridView             
             iClie = this.grdClie.CurrentRow.Index;
@@ -150,8 +152,99 @@ namespace ProjetActive
             frmVisualiser.ShowDialog();
 
             // en sortie du form détail, rafraichir la datagridview             
-            this.afficheClients();
+            this.listeClients();
 
+        }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            // ouvrir la feuille détail en y affichant              
+            // le client correspondant à la ligne sélectionnée 
+
+            Int32 iClie;        // rang du client dans la liste 
+
+            // récupérer indice du client sélectionné en DataGridView             
+            iClie = this.grdClie.CurrentRow.Index;
+
+            // instancier un objet client pointant vers le client d'origine dans la collection            
+            Client leClient = DonneesClient.ArrayStag[iClie] as Client;
+
+            // instancier un form détail pour ce client             
+            frmUpdClie frmVisualiser = new frmUpdClie(leClient);
+            // afficher le form détail en modal             
+            frmVisualiser.ShowDialog();
+
+            // en sortie du form détail, rafraichir la datagridview             
+            this.listeClients();
+
+
+
+
+        }
+
+        private void btnRechercher_Click(object sender, EventArgs e)
+
+        {
+
+            
+            // Si aucune saisie dans champs de recherche, affichage de la liste complète des clients
+            if (txtNom.Text == null && txtDomaine.Text == null && txtMotCle.Text == null)
+            {
+                MessageBox.Show("Vous n'avez pas entré de critères de recherche");
+            }
+
+            //Si saisie dans champ de recherche Nom
+            if (this.txtNom.Text != null)
+            {
+                ((DataView)(this.grdClie.DataSource)).RowFilter = "Nom like '%" + txtNom.Text + "%'";
+            }
+
+            //Si saisie dans champ de recherche Domaine
+            if (this.txtDomaine != null)
+            {
+                ((DataView)(this.grdClie.DataSource)).RowFilter = "Activite like '%" + txtDomaine.Text + "%'";
+            }
+
+            /*
+            //Si saisie dans champ de recherche Mot clé
+            if (this.txtMotCle != null)
+            {
+                ((DataView)(this.grdClie.DataSource)).RowFilter = "Nom like '%" + txtNom.Text + "%'";
+                ((DataView)(this.grdClie.DataSource)).RowFilter = "Domaine like '%" + txtDomaine.Text + "%'";
+                
+            }
+            */
+
+
+
+
+            if (this.grdClie.Rows.Count == 1)
+            {
+                MessageBox.Show("Client n'existant pas!");
+            }
+
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            // ouvrir la feuille détail en y affichant              
+            // le client correspondant à la ligne sélectionnée 
+
+            Int32 iClie;        // rang du client dans la liste 
+
+            // récupérer indice du client sélectionné en DataGridView             
+            iClie = this.grdClie.CurrentRow.Index;
+
+            // instancier un objet client pointant vers le client d'origine dans la collection            
+            Client leClient = DonneesClient.ArrayStag[iClie] as Client;
+
+            // instancier un form détail pour ce client             
+            frmDelClie frmVisualiser = new frmDelClie(leClient);
+            // afficher le form détail en modal             
+            frmVisualiser.ShowDialog();
+
+            // en sortie du form détail, rafraichir la datagridview             
+            this.listeClients();
         }
     }
 }

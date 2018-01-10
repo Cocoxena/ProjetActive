@@ -62,8 +62,8 @@ namespace ProjetActive
         /// <param name="e"></param>
         private void nouveauClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClie frmC = new frmNewClie();
-            frmC.Show();
+            frmNewClie frmN = new frmNewClie();
+            frmN.Show();
         }
 
 
@@ -75,10 +75,9 @@ namespace ProjetActive
         /// <param name="e"></param>
         private void modifierUneFicheClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-            frmUpdClie frmC = new frmUpdClie();
-            frmC.Show();
-            */
+            frmGrdDspClie frm = new frmGrdDspClie();
+            frm.Show();
+            MessageBox.Show("Veuillez sélectionner un client.");
         }
 
 
@@ -90,8 +89,9 @@ namespace ProjetActive
         /// <param name="e"></param>
         private void supprimerUnClientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClie frmC = new frmDelClie();
-            frmC.Show();
+            frmGrdDspClie frm = new frmGrdDspClie();
+            frm.Show();
+            MessageBox.Show("Veuillez sélectionner un client.");
         }
     }
 }
