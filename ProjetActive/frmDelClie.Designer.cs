@@ -33,11 +33,12 @@
             this.gbxCoordonnees.SuspendLayout();
             this.gbxChiffres.SuspendLayout();
             this.gbxNature.SuspendLayout();
+            this.gbxContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(13, 507);
+            this.btnSupprimer.Location = new System.Drawing.Point(18, 641);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
             this.btnSupprimer.TabIndex = 21;
@@ -47,7 +48,7 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(625, 507);
+            this.btnQuitter.Location = new System.Drawing.Point(628, 641);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(75, 23);
             this.btnQuitter.TabIndex = 22;
@@ -58,11 +59,13 @@
             // frmDelClie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(714, 550);
+            this.ClientSize = new System.Drawing.Size(714, 676);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnSupprimer);
             this.Name = "frmDelClie";
             this.Text = "frmDelClient";
+            this.Load += new System.EventHandler(this.frmDelClie_Load);
+            this.Controls.SetChildIndex(this.gbxContact, 0);
             this.Controls.SetChildIndex(this.gbxCoordonnees, 0);
             this.Controls.SetChildIndex(this.gbxChiffres, 0);
             this.Controls.SetChildIndex(this.gbxNature, 0);
@@ -74,6 +77,7 @@
             this.gbxChiffres.PerformLayout();
             this.gbxNature.ResumeLayout(false);
             this.gbxNature.PerformLayout();
+            this.gbxContact.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

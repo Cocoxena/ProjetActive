@@ -33,54 +33,52 @@
             this.gbxCoordonnees.SuspendLayout();
             this.gbxChiffres.SuspendLayout();
             this.gbxNature.SuspendLayout();
+            this.gbxContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtNumero
             // 
-            this.txtNumero.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtNumero.TextChanged += new System.EventHandler(this.txtNumero_TextChanged);
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // txtRaison
             // 
-            this.txtRaison.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtRaison.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtDomaine
             // 
-            this.txtDomaine.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtDomaine.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtAdresse
             // 
-            this.txtAdresse.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtAdresse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtCP
             // 
-            this.txtCP.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtCP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtTelClient
             // 
-            this.txtTelClient.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtTelClient.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtVille
             // 
-            this.txtVille.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            // 
-            // txtCalcul
-            // 
-           
+            this.txtVille.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtEffectif
             // 
-            this.txtEffectif.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtEffectif.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // txtCA
             // 
-            this.txtCA.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtCA.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(20, 778);
-            this.btnAjouter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAjouter.Location = new System.Drawing.Point(12, 638);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(112, 35);
+            this.btnAjouter.Size = new System.Drawing.Size(75, 23);
             this.btnAjouter.TabIndex = 21;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -88,10 +86,9 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(938, 778);
-            this.btnQuitter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnQuitter.Location = new System.Drawing.Point(628, 638);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(112, 35);
+            this.btnQuitter.Size = new System.Drawing.Size(75, 23);
             this.btnQuitter.TabIndex = 22;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
@@ -99,13 +96,15 @@
             // 
             // frmNewClie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1071, 842);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(717, 673);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnAjouter);
-            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmNewClie";
             this.Text = "frmNewClient";
+            this.Click += new System.EventHandler(this.frmNewClie_Click);
+            this.Controls.SetChildIndex(this.gbxContact, 0);
             this.Controls.SetChildIndex(this.gbxCoordonnees, 0);
             this.Controls.SetChildIndex(this.gbxChiffres, 0);
             this.Controls.SetChildIndex(this.gbxNature, 0);
@@ -117,6 +116,7 @@
             this.gbxChiffres.PerformLayout();
             this.gbxNature.ResumeLayout(false);
             this.gbxNature.PerformLayout();
+            this.gbxContact.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

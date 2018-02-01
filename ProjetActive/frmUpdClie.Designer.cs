@@ -33,11 +33,12 @@
             this.gbxCoordonnees.SuspendLayout();
             this.gbxChiffres.SuspendLayout();
             this.gbxNature.SuspendLayout();
+            this.gbxContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEnregistrer
             // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(13, 507);
+            this.btnEnregistrer.Location = new System.Drawing.Point(13, 624);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(86, 28);
             this.btnEnregistrer.TabIndex = 21;
@@ -47,7 +48,7 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(618, 507);
+            this.btnQuitter.Location = new System.Drawing.Point(621, 624);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(82, 28);
             this.btnQuitter.TabIndex = 22;
@@ -58,12 +59,13 @@
             // frmUpdClie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(714, 549);
+            this.ClientSize = new System.Drawing.Size(714, 664);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnEnregistrer);
             this.Name = "frmUpdClie";
             this.Text = "frmUpdClient";
             this.Load += new System.EventHandler(this.frmUpdClie_Load);
+            this.Controls.SetChildIndex(this.gbxContact, 0);
             this.Controls.SetChildIndex(this.gbxCoordonnees, 0);
             this.Controls.SetChildIndex(this.gbxChiffres, 0);
             this.Controls.SetChildIndex(this.gbxNature, 0);
@@ -75,6 +77,7 @@
             this.gbxChiffres.PerformLayout();
             this.gbxNature.ResumeLayout(false);
             this.gbxNature.PerformLayout();
+            this.gbxContact.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

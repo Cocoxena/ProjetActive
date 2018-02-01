@@ -16,5 +16,10 @@ namespace ProjetActive
         {
             InitializeComponent();
         }
+
+        private void lblMotCle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

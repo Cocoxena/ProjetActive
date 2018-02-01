@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ActiveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="RaisonSociale" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="TypeSociete" Type="nchar" MaxLength="10" />
+          <Property Name="Activite" Type="nchar" MaxLength="30" />
+          <Property Name="Adresse" Type="nchar" MaxLength="50" />
+          <Property Name="CodePostal" Type="nchar" MaxLength="5" />
+          <Property Name="Ville" Type="nchar" MaxLength="30" />
+          <Property Name="Telephone" Type="nchar" MaxLength="10" />
+          <Property Name="CA" Type="float" />
+          <Property Name="Effectif" Type="int" />
+          <Property Name="Nature" Type="nchar" MaxLength="15" />
+          <Property Name="ListeContacts" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Intervenant">
+          <Key>
+            <PropertyRef Name="IdContact" />
+          </Key>
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nchar" MaxLength="10" />
+          <Property Name="NomClient" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="NomProjet" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodeProjet" Type="int" Nullable="false" />
+          <Property Name="Fonction" Type="nvarchar" MaxLength="50" />
+          <Property Name="DureeIntervention" Type="int" />
+          <Property Name="IdContact" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Intervenant_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Intervenant" Type="Self.Intervenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Intervenant">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ActiveModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Intervenant" EntityType="Self.Intervenant" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Intervenant_Client" Association="Self.FK_Intervenant_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Intervenant" EntitySet="Intervenant" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ActiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="RaisonSociale" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TypeSociete" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Activite" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="CodePostal" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Ville" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CA" Type="Double" />
+          <Property Name="Effectif" Type="Int32" />
+          <Property Name="Nature" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="ListeContacts" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Intervenant" Relationship="ActiveModel.FK_Intervenant_Client" FromRole="Client" ToRole="Intervenant" />
+        </EntityType>
+        <EntityContainer Name="ActiveEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Intervenant" EntityType="ActiveModel.Intervenant" />
+          <AssociationSet Name="FK_Intervenant_Client" Association="ActiveModel.FK_Intervenant_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Intervenant" EntitySet="Intervenant" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Intervenant">
+          <Key>
+            <PropertyRef Name="IdContact" />
+          </Key>
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="NomProjet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodeProjet" Type="Int32" Nullable="false" />
+          <Property Name="Fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DureeIntervention" Type="Int32" />
+          <Property Name="IdContact" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="ActiveModel.FK_Intervenant_Client" FromRole="Intervenant" ToRole="Client" />
+          <Property Name="NomClient" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Intervenant_Client">
+          <End Type="ActiveModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="ActiveModel.Intervenant" Role="Intervenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Intervenant">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ActiveModelStoreContainer" CdmEntityContainer="ActiveEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="ActiveModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ListeContacts" ColumnName="ListeContacts" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="RaisonSociale" ColumnName="RaisonSociale" />
+                <ScalarProperty Name="TypeSociete" ColumnName="TypeSociete" />
+                <ScalarProperty Name="Activite" ColumnName="Activite" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="CA" ColumnName="CA" />
+                <ScalarProperty Name="Effectif" ColumnName="Effectif" />
+                <ScalarProperty Name="Nature" ColumnName="Nature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Intervenant">
+            <EntityTypeMapping TypeName="ActiveModel.Intervenant">
+              <MappingFragment StoreEntitySet="Intervenant">
+                <ScalarProperty Name="NomClient" ColumnName="NomClient" />
+                <ScalarProperty Name="IdContact" ColumnName="IdContact" />
+                <ScalarProperty Name="DureeIntervention" ColumnName="DureeIntervention" />
+                <ScalarProperty Name="Fonction" ColumnName="Fonction" />
+                <ScalarProperty Name="CodeProjet" ColumnName="CodeProjet" />
+                <ScalarProperty Name="NomProjet" ColumnName="NomProjet" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

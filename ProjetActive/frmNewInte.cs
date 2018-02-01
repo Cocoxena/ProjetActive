@@ -19,5 +19,10 @@ namespace ProjetActive
         {
             this.Close();
         }
+
+        private void frmNewInte_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

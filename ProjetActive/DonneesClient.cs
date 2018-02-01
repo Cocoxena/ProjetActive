@@ -14,6 +14,7 @@ namespace ProjetActive
     /// </summary>
     public class DonneesClient
     {
-        public static ArrayList ArrayStag = new ArrayList();
+        /*public static ArrayList ArrayStag = new ArrayList();*/
+        public static ActiveEntities Db = new ActiveEntities();
     }
 }

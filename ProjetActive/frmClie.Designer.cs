@@ -46,6 +46,7 @@
             this.txtVille = new System.Windows.Forms.TextBox();
             this.lblCPVille = new System.Windows.Forms.Label();
             this.gbxChiffres = new System.Windows.Forms.GroupBox();
+            this.lblErreur = new System.Windows.Forms.Label();
             this.txtEffectif = new System.Windows.Forms.TextBox();
             this.txtCA = new System.Windows.Forms.TextBox();
             this.lblEffectif = new System.Windows.Forms.Label();
@@ -54,9 +55,13 @@
             this.rbtAncienne = new System.Windows.Forms.RadioButton();
             this.rbtSecondaire = new System.Windows.Forms.RadioButton();
             this.rbtPrincipale = new System.Windows.Forms.RadioButton();
+            this.gbxContact = new System.Windows.Forms.GroupBox();
+            this.dgvContacts = new System.Windows.Forms.DataGridView();
             this.gbxCoordonnees.SuspendLayout();
             this.gbxChiffres.SuspendLayout();
             this.gbxNature.SuspendLayout();
+            this.gbxContact.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNumero
@@ -64,9 +69,9 @@
             this.lblNumero.AutoSize = true;
             this.lblNumero.Location = new System.Drawing.Point(44, 34);
             this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(50, 13);
+            this.lblNumero.Size = new System.Drawing.Size(42, 13);
             this.lblNumero.TabIndex = 0;
-            this.lblNumero.Text = "Numéro :";
+            this.lblNumero.Text = "IdClient";
             // 
             // lblRaison
             // 
@@ -225,6 +230,7 @@
             // 
             // gbxChiffres
             // 
+            this.gbxChiffres.Controls.Add(this.lblErreur);
             this.gbxChiffres.Controls.Add(this.txtEffectif);
             this.gbxChiffres.Controls.Add(this.txtCA);
             this.gbxChiffres.Controls.Add(this.lblEffectif);
@@ -235,6 +241,18 @@
             this.gbxChiffres.TabIndex = 19;
             this.gbxChiffres.TabStop = false;
             this.gbxChiffres.Text = "Client en chiffres";
+            // 
+            // lblErreur
+            // 
+            this.lblErreur.AutoSize = true;
+            this.lblErreur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErreur.ForeColor = System.Drawing.Color.Red;
+            this.lblErreur.Location = new System.Drawing.Point(323, 63);
+            this.lblErreur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblErreur.Name = "lblErreur";
+            this.lblErreur.Size = new System.Drawing.Size(367, 13);
+            this.lblErreur.TabIndex = 4;
+            this.lblErreur.Text = "Erreur: le CA est erroné, car le CA/employé est > à 1M€uros!!!!!";
             // 
             // txtEffectif
             // 
@@ -317,11 +335,31 @@
             this.rbtPrincipale.Text = "Principale";
             this.rbtPrincipale.UseVisualStyleBackColor = true;
             // 
+            // gbxContact
+            // 
+            this.gbxContact.Controls.Add(this.dgvContacts);
+            this.gbxContact.Location = new System.Drawing.Point(13, 512);
+            this.gbxContact.Name = "gbxContact";
+            this.gbxContact.Size = new System.Drawing.Size(690, 106);
+            this.gbxContact.TabIndex = 21;
+            this.gbxContact.TabStop = false;
+            this.gbxContact.Text = "Contacts - Intervenants";
+            // 
+            // dgvContacts
+            // 
+            this.dgvContacts.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContacts.Location = new System.Drawing.Point(46, 19);
+            this.dgvContacts.Name = "dgvContacts";
+            this.dgvContacts.Size = new System.Drawing.Size(601, 70);
+            this.dgvContacts.TabIndex = 0;
+            // 
             // frmClie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(714, 511);
+            this.ClientSize = new System.Drawing.Size(714, 630);
+            this.Controls.Add(this.gbxContact);
             this.Controls.Add(this.gbxNature);
             this.Controls.Add(this.gbxChiffres);
             this.Controls.Add(this.gbxCoordonnees);
@@ -333,6 +371,8 @@
             this.gbxChiffres.PerformLayout();
             this.gbxNature.ResumeLayout(false);
             this.gbxNature.PerformLayout();
+            this.gbxContact.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -365,5 +405,8 @@
         protected System.Windows.Forms.RadioButton rbtAncienne;
         protected System.Windows.Forms.RadioButton rbtSecondaire;
         protected System.Windows.Forms.RadioButton rbtPrincipale;
+        protected System.Windows.Forms.Label lblErreur;
+        protected System.Windows.Forms.GroupBox gbxContact;
+        protected System.Windows.Forms.DataGridView dgvContacts;
     }
 }

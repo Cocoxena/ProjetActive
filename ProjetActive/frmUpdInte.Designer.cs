@@ -32,11 +32,12 @@
             this.btnQuitter = new System.Windows.Forms.Button();
             this.gbxCoordonnees.SuspendLayout();
             this.gbxIntervention.SuspendLayout();
+            this.gbxIdContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // Enregistrer
             // 
-            this.Enregistrer.Location = new System.Drawing.Point(23, 425);
+            this.Enregistrer.Location = new System.Drawing.Point(27, 561);
             this.Enregistrer.Name = "Enregistrer";
             this.Enregistrer.Size = new System.Drawing.Size(85, 30);
             this.Enregistrer.TabIndex = 2;
@@ -45,7 +46,7 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(504, 425);
+            this.btnQuitter.Location = new System.Drawing.Point(504, 561);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(79, 30);
             this.btnQuitter.TabIndex = 3;
@@ -56,11 +57,12 @@
             // frmUpdInte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(610, 467);
+            this.ClientSize = new System.Drawing.Size(610, 603);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.Enregistrer);
             this.Name = "frmUpdInte";
             this.Text = "frmUpdIntervenant";
+            this.Controls.SetChildIndex(this.gbxIdContact, 0);
             this.Controls.SetChildIndex(this.gbxCoordonnees, 0);
             this.Controls.SetChildIndex(this.gbxIntervention, 0);
             this.Controls.SetChildIndex(this.Enregistrer, 0);
@@ -69,6 +71,8 @@
             this.gbxCoordonnees.PerformLayout();
             this.gbxIntervention.ResumeLayout(false);
             this.gbxIntervention.PerformLayout();
+            this.gbxIdContact.ResumeLayout(false);
+            this.gbxIdContact.PerformLayout();
             this.ResumeLayout(false);
 
         }

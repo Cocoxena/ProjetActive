@@ -49,6 +49,8 @@
             // 
             // gbxRecherche
             // 
+            this.gbxRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbxRecherche.Controls.Add(this.btnTous);
             this.gbxRecherche.Controls.Add(this.btnRechercher);
             this.gbxRecherche.Controls.Add(this.txtMotCle);
@@ -57,16 +59,17 @@
             this.gbxRecherche.Controls.Add(this.txtNom);
             this.gbxRecherche.Controls.Add(this.lblDomaine);
             this.gbxRecherche.Controls.Add(this.lblNom);
-            this.gbxRecherche.Location = new System.Drawing.Point(28, 33);
+            this.gbxRecherche.Location = new System.Drawing.Point(28, 53);
             this.gbxRecherche.Name = "gbxRecherche";
-            this.gbxRecherche.Size = new System.Drawing.Size(764, 189);
+            this.gbxRecherche.Size = new System.Drawing.Size(1244, 203);
             this.gbxRecherche.TabIndex = 0;
             this.gbxRecherche.TabStop = false;
             this.gbxRecherche.Text = "Recherche";
             // 
             // btnTous
             // 
-            this.btnTous.Location = new System.Drawing.Point(644, 141);
+            this.btnTous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTous.Location = new System.Drawing.Point(1142, 144);
             this.btnTous.Name = "btnTous";
             this.btnTous.Size = new System.Drawing.Size(92, 29);
             this.btnTous.TabIndex = 8;
@@ -76,9 +79,11 @@
             // 
             // btnRechercher
             // 
-            this.btnRechercher.Location = new System.Drawing.Point(463, 141);
+            this.btnRechercher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRechercher.Location = new System.Drawing.Point(1031, 143);
             this.btnRechercher.Name = "btnRechercher";
-            this.btnRechercher.Size = new System.Drawing.Size(92, 29);
+            this.btnRechercher.Size = new System.Drawing.Size(92, 30);
             this.btnRechercher.TabIndex = 7;
             this.btnRechercher.Text = "Rechercher";
             this.btnRechercher.UseVisualStyleBackColor = true;
@@ -86,16 +91,22 @@
             // 
             // txtMotCle
             // 
+            this.txtMotCle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMotCle.Location = new System.Drawing.Point(158, 102);
             this.txtMotCle.Name = "txtMotCle";
-            this.txtMotCle.Size = new System.Drawing.Size(397, 20);
+            this.txtMotCle.Size = new System.Drawing.Size(965, 20);
             this.txtMotCle.TabIndex = 5;
             // 
             // txtDomaine
             // 
+            this.txtDomaine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDomaine.Location = new System.Drawing.Point(158, 65);
             this.txtDomaine.Name = "txtDomaine";
-            this.txtDomaine.Size = new System.Drawing.Size(397, 20);
+            this.txtDomaine.Size = new System.Drawing.Size(965, 20);
             this.txtDomaine.TabIndex = 4;
             // 
             // lblMotCle
@@ -109,9 +120,12 @@
             // 
             // txtNom
             // 
+            this.txtNom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNom.Location = new System.Drawing.Point(158, 28);
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(397, 20);
+            this.txtNom.Size = new System.Drawing.Size(965, 20);
             this.txtNom.TabIndex = 2;
             // 
             // lblDomaine
@@ -134,12 +148,16 @@
             // 
             // grdClie
             // 
+            this.grdClie.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdClie.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.grdClie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdClie.Location = new System.Drawing.Point(28, 273);
+            this.grdClie.Location = new System.Drawing.Point(26, 273);
             this.grdClie.Name = "grdClie";
-            this.grdClie.Size = new System.Drawing.Size(764, 146);
+            this.grdClie.Size = new System.Drawing.Size(1246, 216);
             this.grdClie.TabIndex = 1;
+            this.grdClie.DoubleClick += new System.EventHandler(this.grdClie_DoubleClick);
             // 
             // lblAffichage
             // 
@@ -155,7 +173,8 @@
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(28, 435);
+            this.btnAjouter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAjouter.Location = new System.Drawing.Point(28, 502);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(101, 32);
             this.btnAjouter.TabIndex = 5;
@@ -165,7 +184,8 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(685, 435);
+            this.btnQuitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnQuitter.Location = new System.Drawing.Point(1168, 502);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(107, 32);
             this.btnQuitter.TabIndex = 6;
@@ -175,7 +195,8 @@
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(530, 435);
+            this.btnSupprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupprimer.Location = new System.Drawing.Point(1013, 502);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(93, 32);
             this.btnSupprimer.TabIndex = 7;
@@ -185,7 +206,8 @@
             // 
             // btnModifier
             // 
-            this.btnModifier.Location = new System.Drawing.Point(177, 435);
+            this.btnModifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnModifier.Location = new System.Drawing.Point(177, 502);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(97, 32);
             this.btnModifier.TabIndex = 8;
@@ -197,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 494);
+            this.ClientSize = new System.Drawing.Size(1293, 552);
             this.Controls.Add(this.btnModifier);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnQuitter);

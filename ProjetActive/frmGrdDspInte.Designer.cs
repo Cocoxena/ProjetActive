@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblNomRecherche = new System.Windows.Forms.Label();
+            this.lblNomProjetRecherche = new System.Windows.Forms.Label();
             this.dgvListe = new System.Windows.Forms.DataGridView();
             this.grbProjet = new System.Windows.Forms.GroupBox();
-            this.btnOK = new System.Windows.Forms.Button();
             this.lblMotCle = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnTous = new System.Windows.Forms.Button();
@@ -42,6 +41,8 @@
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
+            this.lblNomContactRecherche = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListe)).BeginInit();
             this.grbProjet.SuspendLayout();
             this.SuspendLayout();
@@ -49,19 +50,19 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(128, 42);
+            this.comboBox1.Location = new System.Drawing.Point(125, 34);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(380, 21);
+            this.comboBox1.Size = new System.Drawing.Size(424, 21);
             this.comboBox1.TabIndex = 1;
             // 
-            // lblNomRecherche
+            // lblNomProjetRecherche
             // 
-            this.lblNomRecherche.AutoSize = true;
-            this.lblNomRecherche.Location = new System.Drawing.Point(19, 45);
-            this.lblNomRecherche.Name = "lblNomRecherche";
-            this.lblNomRecherche.Size = new System.Drawing.Size(90, 13);
-            this.lblNomRecherche.TabIndex = 2;
-            this.lblNomRecherche.Text = "Par nom de projet";
+            this.lblNomProjetRecherche.AutoSize = true;
+            this.lblNomProjetRecherche.Location = new System.Drawing.Point(19, 37);
+            this.lblNomProjetRecherche.Name = "lblNomProjetRecherche";
+            this.lblNomProjetRecherche.Size = new System.Drawing.Size(90, 13);
+            this.lblNomProjetRecherche.TabIndex = 2;
+            this.lblNomProjetRecherche.Text = "Par nom de projet";
             // 
             // dgvListe
             // 
@@ -74,13 +75,14 @@
             // 
             // grbProjet
             // 
-            this.grbProjet.Controls.Add(this.btnOK);
+            this.grbProjet.Controls.Add(this.textBox2);
+            this.grbProjet.Controls.Add(this.lblNomContactRecherche);
             this.grbProjet.Controls.Add(this.lblMotCle);
             this.grbProjet.Controls.Add(this.textBox1);
             this.grbProjet.Controls.Add(this.btnTous);
             this.grbProjet.Controls.Add(this.btnRechercher);
             this.grbProjet.Controls.Add(this.comboBox1);
-            this.grbProjet.Controls.Add(this.lblNomRecherche);
+            this.grbProjet.Controls.Add(this.lblNomProjetRecherche);
             this.grbProjet.Location = new System.Drawing.Point(25, 23);
             this.grbProjet.Name = "grbProjet";
             this.grbProjet.Size = new System.Drawing.Size(697, 190);
@@ -88,45 +90,37 @@
             this.grbProjet.TabStop = false;
             this.grbProjet.Text = "Recherche ";
             // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(549, 42);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(115, 23);
-            this.btnOK.TabIndex = 7;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            // 
             // lblMotCle
             // 
             this.lblMotCle.AutoSize = true;
-            this.lblMotCle.Location = new System.Drawing.Point(19, 101);
+            this.lblMotCle.Location = new System.Drawing.Point(19, 116);
             this.lblMotCle.Name = "lblMotCle";
             this.lblMotCle.Size = new System.Drawing.Size(60, 13);
             this.lblMotCle.TabIndex = 6;
             this.lblMotCle.Text = "Par mot clé";
+            this.lblMotCle.Click += new System.EventHandler(this.lblMotCle_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(128, 98);
+            this.textBox1.Location = new System.Drawing.Point(125, 116);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(380, 20);
+            this.textBox1.Size = new System.Drawing.Size(424, 20);
             this.textBox1.TabIndex = 5;
             // 
             // btnTous
             // 
-            this.btnTous.Location = new System.Drawing.Point(549, 152);
+            this.btnTous.Location = new System.Drawing.Point(581, 152);
             this.btnTous.Name = "btnTous";
-            this.btnTous.Size = new System.Drawing.Size(115, 23);
+            this.btnTous.Size = new System.Drawing.Size(86, 23);
             this.btnTous.TabIndex = 4;
             this.btnTous.Text = "Afficher TOUS";
             this.btnTous.UseVisualStyleBackColor = true;
             // 
             // btnRechercher
             // 
-            this.btnRechercher.Location = new System.Drawing.Point(549, 96);
+            this.btnRechercher.Location = new System.Drawing.Point(457, 152);
             this.btnRechercher.Name = "btnRechercher";
-            this.btnRechercher.Size = new System.Drawing.Size(115, 23);
+            this.btnRechercher.Size = new System.Drawing.Size(92, 23);
             this.btnRechercher.TabIndex = 3;
             this.btnRechercher.Text = "Rechercher";
             this.btnRechercher.UseVisualStyleBackColor = true;
@@ -137,15 +131,15 @@
             this.lblListeIntervenant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblListeIntervenant.Location = new System.Drawing.Point(21, 239);
             this.lblListeIntervenant.Name = "lblListeIntervenant";
-            this.lblListeIntervenant.Size = new System.Drawing.Size(264, 20);
+            this.lblListeIntervenant.Size = new System.Drawing.Size(198, 20);
             this.lblListeIntervenant.TabIndex = 5;
-            this.lblListeIntervenant.Text = "Affichage des intervenants au projet";
+            this.lblListeIntervenant.Text = "Affichage des intervenants";
             // 
             // btnQuitter
             // 
             this.btnQuitter.Location = new System.Drawing.Point(624, 449);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(98, 36);
+            this.btnQuitter.Size = new System.Drawing.Size(98, 27);
             this.btnQuitter.TabIndex = 8;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
@@ -154,7 +148,7 @@
             // 
             this.btnAjouter.Location = new System.Drawing.Point(25, 449);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(98, 36);
+            this.btnAjouter.Size = new System.Drawing.Size(98, 27);
             this.btnAjouter.TabIndex = 9;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -163,7 +157,7 @@
             // 
             this.btnSupprimer.Location = new System.Drawing.Point(482, 449);
             this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(92, 36);
+            this.btnSupprimer.Size = new System.Drawing.Size(92, 27);
             this.btnSupprimer.TabIndex = 10;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
@@ -172,10 +166,26 @@
             // 
             this.btnModifier.Location = new System.Drawing.Point(175, 449);
             this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(89, 36);
+            this.btnModifier.Size = new System.Drawing.Size(89, 27);
             this.btnModifier.TabIndex = 11;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            // 
+            // lblNomContactRecherche
+            // 
+            this.lblNomContactRecherche.AutoSize = true;
+            this.lblNomContactRecherche.Location = new System.Drawing.Point(19, 78);
+            this.lblNomContactRecherche.Name = "lblNomContactRecherche";
+            this.lblNomContactRecherche.Size = new System.Drawing.Size(100, 13);
+            this.lblNomContactRecherche.TabIndex = 8;
+            this.lblNomContactRecherche.Text = "Par nom de contact";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(125, 75);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(424, 20);
+            this.textBox2.TabIndex = 9;
             // 
             // frmGrdDspInte
             // 
@@ -201,11 +211,10 @@
 
         #endregion
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label lblNomRecherche;
+        private System.Windows.Forms.Label lblNomProjetRecherche;
         private System.Windows.Forms.DataGridView dgvListe;
         private System.Windows.Forms.GroupBox grbProjet;
         private System.Windows.Forms.Label lblListeIntervenant;
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label lblMotCle;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnTous;
@@ -214,5 +223,7 @@
         private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnModifier;
+        protected System.Windows.Forms.TextBox textBox2;
+        protected System.Windows.Forms.Label lblNomContactRecherche;
     }
 }

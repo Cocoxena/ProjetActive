@@ -19,6 +19,7 @@ namespace ProjetActive
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Vous allez quitter Active?", "Quitter");
             Application.Exit();
         }
 
@@ -77,7 +78,7 @@ namespace ProjetActive
         {
             frmGrdDspClie frm = new frmGrdDspClie();
             frm.Show();
-            MessageBox.Show("Veuillez sélectionner un client.");
+            MessageBox.Show("Veuillez sélectionner un client.", "Modification");
         }
 
 
@@ -91,7 +92,7 @@ namespace ProjetActive
         {
             frmGrdDspClie frm = new frmGrdDspClie();
             frm.Show();
-            MessageBox.Show("Veuillez sélectionner un client.");
+            MessageBox.Show("Veuillez sélectionner un client.","Suppression");
         }
     }
 }

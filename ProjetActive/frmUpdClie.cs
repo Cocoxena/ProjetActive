@@ -24,9 +24,16 @@ namespace ProjetActive
             //créer une référence d'objet client
             // pointant vers le client reçu en paramètre
             this.leClient = unClient;
+            lblErreur.Visible = false;
             InitializeComponent();
+
         }
 
+        /// <summary>
+        /// Bouton Quitter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnQuitter_Click(object sender, EventArgs e)
         {
             DialogResult reponse;
@@ -42,7 +49,7 @@ namespace ProjetActive
                 this.Close();
             }
         }
-        
+
 
         /// <summary>         
         /// constructeur adapté : mémorise le stagiaire à traiter 
@@ -66,7 +73,7 @@ namespace ProjetActive
             // affecter les textbox             
             this.txtNumero.Text = unClient.IdClient.ToString();
             this.txtRaison.Text = unClient.RaisonSociale;
-            
+
             if (rbtPrive.Checked)
             {
                 this.rbtPrive.Text = unClient.TypeSociete;
@@ -74,8 +81,8 @@ namespace ProjetActive
             else
             {
                 this.rbtPublic.Text = unClient.TypeSociete;
-            } 
-            
+            }
+
             this.txtDomaine.Text = unClient.Activite;
             this.txtAdresse.Text = unClient.Adresse;
             this.txtCP.Text = unClient.CodePostal;
@@ -101,45 +108,93 @@ namespace ProjetActive
             }
         }
 
-
+        /// <summary>
+        /// Bouton Enregistrer
+        /// validation des modifications ==> affecter au client les nouvelles données saisies
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            // fermeture de la boite de dialogue avec sauvegarde des données modifiées    
-            Int32 iClie = DonneesClient.ArrayStag.IndexOf(leClient);
-            ((Client)DonneesClient.ArrayStag[iClie]).IdClient = Int32.Parse(this.txtNumero.Text.Trim());
-            ((Client)DonneesClient.ArrayStag[iClie]).RaisonSociale = this.txtRaison.Text;
-            if (rbtPrive.Checked)
-            {
-                ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPrive.Text;
-            }
-            else
-            {
-                ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPublic.Text;
-            }
-            ((Client)DonneesClient.ArrayStag[iClie]).TypeSociete = this.rbtPrive.Text;
-            ((Client)DonneesClient.ArrayStag[iClie]).Activite = this.txtDomaine.Text;
-            ((Client)DonneesClient.ArrayStag[iClie]).Adresse = this.txtAdresse.Text;
-            ((Client)DonneesClient.ArrayStag[iClie]).CodePostal = this.txtCP.Text;
-            ((Client)DonneesClient.ArrayStag[iClie]).Ville = this.txtVille.Text;
-            ((Client)DonneesClient.ArrayStag[iClie]).CA = Int32.Parse(this.txtCA.Text.Trim());
-            ((Client)DonneesClient.ArrayStag[iClie]).Effectif = Int32.Parse(this.txtEffectif.Text.Trim());
+                try
+                {
+                    this.leClient.IdClient = Int32.Parse(this.txtNumero.Text.Trim());
+                    this.leClient.RaisonSociale = this.txtRaison.Text;
+                    
+                    if (rbtPrive.Checked)
+                    {
+                        this.rbtPrive.Text = this.leClient.TypeSociete;
+                    }
+                    else
+                    {
+                        this.rbtPublic.Text = this.leClient.TypeSociete;
+                    }
 
-            if (rbtPrincipale.Checked)
-            {
-                ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtPrincipale.Text;
-            }
-            else
-            {
-                if (rbtSecondaire.Checked)
-                {
-                    ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtSecondaire.Text;
+                    this.leClient.Activite = this.txtDomaine.Text;
+                    this.leClient.Adresse = this.txtAdresse.Text;
+                    this.leClient.CodePostal = this.txtCP.Text;
+                    this.leClient.Ville = this.txtVille.Text;
+                    this.leClient.Telephone = this.txtTelClient.Text;
+                    this.leClient.CA = Int32.Parse(this.txtCA.Text.Trim());
+                    this.leClient.Effectif = Int32.Parse(this.txtEffectif.Text.Trim());
+
+                    if (rbtPrincipale.Checked)
+                    {
+                        this.rbtPrincipale.Text = this.leClient.Nature;
+                    }
+                    else
+                    {
+                        if (rbtSecondaire.Checked)
+                        {
+                            this.rbtSecondaire.Text = this.leClient.Nature;
+
+                        }
+                        else
+                        {
+                            this.rbtAncienne.Text = this.leClient.Nature;
+                        }
+                    }
+
+                // TODO liste de contacts 
+
+                // impacter la BdD
+                Client leClientEF = DonneesClient.Db.Client.Find(leClient.IdClient);
+                // MAJ du client dans le Framework Entity
+                leClientEF.IdClient = leClient.IdClient;
+                leClientEF.RaisonSociale = leClient.RaisonSociale;
+                leClientEF.TypeSociete = leClient.TypeSociete;
+                leClientEF.Activite = leClient.Activite;
+                leClientEF.Adresse = leClient.Adresse;
+                leClientEF.CodePostal = leClient.CodePostal;
+                leClientEF.Ville = leClient.Ville;
+                leClientEF.Telephone = leClient.Telephone;
+                leClientEF.CA = leClient.CA;
+                leClientEF.Effectif = leClient.Effectif;
+                leClientEF.Nature = leClient.Nature;
+
+                // MAJ BdD
+                DonneesClient.Db.SaveChanges();
+
+                // Affichage message d'enregistrement 
+                MessageBox.Show("Données sauvegardées", "Enregistrement");
+                this.Close();
+                
+                // visualiser la saisie dans la datagridview
+                frmGrdDspClie frmG = new frmGrdDspClie();
+                frmG.ShowDialog();
+
                 }
-                else
+
+                catch (Exception ex)  // en cas d'erreur détectée
                 {
-                    ((Client)DonneesClient.ArrayStag[iClie]).Nature = this.rbtAncienne.Text;
+                    MessageBox.Show(ex.Message, "Client modifié");
                 }
-                this.DialogResult = DialogResult.OK;
-            }
+
+                // fermer la fenêtre en enregistrant les modifications 
+
+
         }
     }
-}
+        
+    }
+

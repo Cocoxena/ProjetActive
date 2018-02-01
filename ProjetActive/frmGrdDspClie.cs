@@ -12,9 +12,11 @@ namespace ProjetActive
 {
     public partial class frmGrdDspClie : Form
     {
+
         public frmGrdDspClie()
         {
             InitializeComponent();
+            
             listeClients();
         }
 
@@ -50,10 +52,7 @@ namespace ProjetActive
             }
         }
 
-
-
-
-
+      
 
         /// <summary>         
         /// rétablit la source de données de la dataGridView  
@@ -65,40 +64,40 @@ namespace ProjetActive
             // à relier au datagridview pour personnaliser l'affichage
             DataTable dt = new DataTable();
             DataRow dr;    // ligne de la datatable             
-            Int32 i;       // var de boucle 
-
+            
             // ajout à la datatable de 3 colonnes personnalisées 
             dt.Columns.Add(new DataColumn("Numéro", typeof(System.Int32)));
             dt.Columns.Add(new DataColumn("Nom", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Type", typeof(System.String)));
-            dt.Columns.Add(new DataColumn("Domaine activité", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Domaine", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Adresse", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Code Postal", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Ville", typeof(System.String)));
-            dt.Columns.Add(new DataColumn("Téléphone", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Telephone", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Chiffres Affaires", typeof(System.Decimal)));
             dt.Columns.Add(new DataColumn("Effectif", typeof(System.Int32)));
             dt.Columns.Add(new DataColumn("Nature", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Liste de Contacts", typeof(System.String)));
 
             // boucle remplissage de la DataTable à partir de la collection  
-            for (i = 0; i < DonneesClient.ArrayStag.Count; i++)
+            foreach (Client unClientEF in DonneesClient.Db.Client.ToList())
             {
                 // instanciation DataRow (=ligne de DataTable)                 
                 dr = dt.NewRow();
-                // affectation des 11 colonnes                
-                // la collection voit les éléments comme des ‘Object’                  
-                // ==>'caster' en Client pour en voir les attributs                
-                dr[0] = ((Client)(DonneesClient.ArrayStag[i])).IdClient;
-                dr[1] = ((Client)(DonneesClient.ArrayStag[i])).RaisonSociale;
-                dr[2] = ((Client)(DonneesClient.ArrayStag[i])).TypeSociete;
-                dr[3] = ((Client)(DonneesClient.ArrayStag[i])).Activite;
-                dr[4] = ((Client)(DonneesClient.ArrayStag[i])).Adresse;
-                dr[5] = ((Client)(DonneesClient.ArrayStag[i])).CodePostal;
-                dr[6] = ((Client)(DonneesClient.ArrayStag[i])).Ville;
-                dr[7] = ((Client)(DonneesClient.ArrayStag[i])).Telephone;
-                dr[8] = ((Client)(DonneesClient.ArrayStag[i])).CA;
-                dr[9] = ((Client)(DonneesClient.ArrayStag[i])).Effectif;
-                dr[10] = ((Client)(DonneesClient.ArrayStag[i])).Nature;
+                // affectation des 12 colonnes à partir de l'Entity                                  
+                dr[0] = unClientEF.IdClient;
+                dr[1] = unClientEF.RaisonSociale;
+                dr[2] = unClientEF.TypeSociete;
+                dr[3] = unClientEF.Activite;
+                dr[4] = unClientEF.Adresse;
+                dr[5] = unClientEF.CodePostal;
+                dr[6] = unClientEF.Ville;
+                dr[7] = unClientEF.Telephone;
+                dr[8] = unClientEF.CA;
+                dr[9] = unClientEF.Effectif;
+                dr[10] = unClientEF.Nature;
+                dr[11] = unClientEF.ListeContacts;
+                
 
                 // ajout de la ligne à la Datatable                 
                 dt.Rows.Add(dr);
@@ -115,10 +114,7 @@ namespace ProjetActive
             dr = null;
         }
 
-
-
-
-
+        
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
@@ -135,75 +131,67 @@ namespace ProjetActive
         /// <param name="e"></param>   
         private void frmGrdDspClie_DoubleClick(object sender, EventArgs e)
         {
-            // ouvrir la feuille détail en y affichant              
-            // le client correspondant à la ligne double-cliquée 
-
-            Int32 iClie;        // rang du client dans la liste 
-
-            // récupérer indice du client cliqué en DataGridView             
-            iClie = this.grdClie.CurrentRow.Index;
             
-            // instancier un objet client pointant vers le client d'origine dans la collection            
-            Client leClient = DonneesClient.ArrayStag[iClie] as Client;
-
-            // instancier un form détail pour ce client             
-            frmUpdClie frmVisualiser = new frmUpdClie(leClient);
-            // afficher le form détail en modal             
-            frmVisualiser.ShowDialog();
-
-            // en sortie du form détail, rafraichir la datagridview             
-            this.listeClients();
-
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
         {
             // ouvrir la feuille détail en y affichant              
-            // le client correspondant à la ligne sélectionnée 
+            // le client correspondant à la ligne double-cliquée 
 
-            Int32 iClie;        // rang du client dans la liste 
+            Int32 idClie;        // rang du client dans la liste 
 
-            // récupérer indice du client sélectionné en DataGridView             
-            iClie = this.grdClie.CurrentRow.Index;
+            // récupérer indice du client cliqué en DataGridView             
+            idClie = (int)this.grdClie.CurrentRow.Cells[0].Value;
 
-            // instancier un objet client pointant vers le client d'origine dans la collection            
-            Client leClient = DonneesClient.ArrayStag[iClie] as Client;
+            // rechercher l'objet Entity
+            Client leClientEF = DonneesClient.Db.Client.Find(idClie);
 
-            // instancier un form détail pour ce client             
+            // affecter de nouvelles données au client
+            Client leClient = new Client();
+            leClient.IdClient = leClientEF.IdClient;
+            leClient.RaisonSociale = leClientEF.RaisonSociale;
+            leClient.TypeSociete = leClientEF.TypeSociete;
+            leClient.Activite = leClientEF.Activite;
+            leClient.Adresse = leClientEF.Adresse;
+            leClient.CodePostal = leClientEF.CodePostal;
+            leClient.Ville = leClientEF.Ville;
+            leClient.Telephone = leClientEF.Telephone;
+            leClient.CA = leClientEF.CA;
+            leClient.Effectif = leClientEF.Effectif;
+            leClient.Nature = leClientEF.Nature;
+
+            // instancier un form pour visualiser la fiche client
             frmUpdClie frmVisualiser = new frmUpdClie(leClient);
             // afficher le form détail en modal             
             frmVisualiser.ShowDialog();
-
+             
+            // sauvegarde des nouvelles données
+            DonneesClient.Db.SaveChanges();
+            
             // en sortie du form détail, rafraichir la datagridview             
             this.listeClients();
-
-
-
-
         }
+
+
 
         private void btnRechercher_Click(object sender, EventArgs e)
 
         {
-
             
-            // Si aucune saisie dans champs de recherche, affichage de la liste complète des clients
-            if (txtNom.Text == null && txtDomaine.Text == null && txtMotCle.Text == null)
-            {
-                MessageBox.Show("Vous n'avez pas entré de critères de recherche");
-            }
-
             //Si saisie dans champ de recherche Nom
             if (this.txtNom.Text != null)
             {
                 ((DataView)(this.grdClie.DataSource)).RowFilter = "Nom like '%" + txtNom.Text + "%'";
             }
 
+            /*
             //Si saisie dans champ de recherche Domaine
             if (this.txtDomaine != null)
             {
-                ((DataView)(this.grdClie.DataSource)).RowFilter = "Activite like '%" + txtDomaine.Text + "%'";
+                ((DataView)(this.grdClie.DataSource)).RowFilter = "Domaine like '%" + txtDomaine.Text + "%'";
             }
+            */
 
             /*
             //Si saisie dans champ de recherche Mot clé
@@ -214,9 +202,7 @@ namespace ProjetActive
                 
             }
             */
-
-
-
+            
 
             if (this.grdClie.Rows.Count == 1)
             {
@@ -228,18 +214,92 @@ namespace ProjetActive
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             // ouvrir la feuille détail en y affichant              
-            // le client correspondant à la ligne sélectionnée 
+            // le client correspondant à la ligne double-cliquée 
 
             Int32 iClie;        // rang du client dans la liste 
 
-            // récupérer indice du client sélectionné en DataGridView             
-            iClie = this.grdClie.CurrentRow.Index;
+            // récupérer indice du client cliqué en DataGridView             
+            iClie = (int)this.grdClie.CurrentRow.Cells[0].Value;
 
-            // instancier un objet client pointant vers le client d'origine dans la collection            
-            Client leClient = DonneesClient.ArrayStag[iClie] as Client;
+            // rechercher l'objet Entity
+            Client leClientEF = DonneesClient.Db.Client.Find(iClie);
 
-            // instancier un form détail pour ce client             
+            // instancier un objet Métier Client et le renseigner à partir de l'Entity dans le form
+            Client leClient = new Client();
+            leClient.IdClient = leClientEF.IdClient;
+            leClient.RaisonSociale = leClientEF.RaisonSociale;
+            leClient.TypeSociete = leClientEF.TypeSociete;
+            leClient.Activite = leClientEF.Activite;
+            leClient.Adresse = leClientEF.Adresse;
+            leClient.CodePostal = leClientEF.CodePostal;
+            leClient.Ville = leClientEF.Ville;
+            leClient.Telephone = leClientEF.Telephone;
+            leClient.CA = leClientEF.CA;
+            leClient.Effectif = leClientEF.Effectif;
+            leClient.Nature = leClientEF.Nature;
+
+            // instancier un form pour visualiser la fiche client
             frmDelClie frmVisualiser = new frmDelClie(leClient);
+            // afficher le form détail en modal             
+            frmVisualiser.ShowDialog();
+
+            
+            DialogResult reponse;
+            reponse = MessageBox.Show("Voulez-vous vraiment supprimer cette fiche client, car tous les contacts associés seront supprimés également?", "Supprimer?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning); ;
+
+            if (reponse == DialogResult.Yes)
+            {
+                
+                // supprimer le client de la liste
+                DonneesClient.Db.Client.Remove(leClientEF);
+                
+
+                // impacter dans la BdD
+                DonneesClient.Db.SaveChanges();
+                this.DialogResult = DialogResult.OK;
+            }
+                    
+            // en sortie du form détail, rafraichir la datagridview             
+            this.listeClients();
+        }
+
+
+        /// <summary>         
+        /// Double-clic sur le datagridview :  
+        /// ouvrir la feuille détail en y affichant       
+        /// le client correspondant à la ligne double-cliquée        
+        /// </summary>         
+        /// <param name="sender"></param>
+        /// <param name="e"></param>   
+        private void grdClie_DoubleClick(object sender, EventArgs e)
+        {
+            // ouvrir la feuille détail en y affichant              
+            // le client correspondant à la ligne double-cliquée 
+
+            Int32 iClie;        // rang du client dans la liste 
+
+            // récupérer indice du client cliqué en DataGridView             
+            iClie = (int)this.grdClie.CurrentRow.Cells[0].Value;
+
+            // rechercher l'objet Entity
+            Client leClientEF = DonneesClient.Db.Client.Find(iClie);
+
+            // instancier un objet Métier Client et le renseigner à partir de l'Entity dans le form
+            Client leClient = new Client();
+            leClient.IdClient = leClientEF.IdClient;
+            leClient.RaisonSociale = leClientEF.RaisonSociale;
+            leClient.TypeSociete = leClientEF.TypeSociete;
+            leClient.Activite = leClientEF.Activite;
+            leClient.Adresse = leClientEF.Adresse;
+            leClient.CodePostal = leClientEF.CodePostal;
+            leClient.Ville = leClientEF.Ville;
+            leClient.Telephone = leClientEF.Telephone;
+            leClient.CA = leClientEF.CA;
+            leClient.Effectif = leClientEF.Effectif;
+            leClient.Nature = leClientEF.Nature;
+
+            // instancier un form pour visualiser la fiche client
+            frmUpdClie frmVisualiser = new frmUpdClie(leClient);
             // afficher le form détail en modal             
             frmVisualiser.ShowDialog();
 

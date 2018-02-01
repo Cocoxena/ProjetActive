@@ -32,11 +32,12 @@
             this.btnQuitter = new System.Windows.Forms.Button();
             this.gbxCoordonnees.SuspendLayout();
             this.gbxIntervention.SuspendLayout();
+            this.gbxIdContact.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(23, 425);
+            this.btnAjouter.Location = new System.Drawing.Point(23, 564);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(75, 23);
             this.btnAjouter.TabIndex = 2;
@@ -45,7 +46,7 @@
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Location = new System.Drawing.Point(508, 425);
+            this.btnQuitter.Location = new System.Drawing.Point(508, 564);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(75, 23);
             this.btnQuitter.TabIndex = 3;
@@ -56,11 +57,13 @@
             // frmNewInte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(610, 466);
+            this.ClientSize = new System.Drawing.Size(610, 613);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.btnAjouter);
             this.Name = "frmNewInte";
-            this.Text = "frmNewIntervenant";
+            this.Text = "NewIntervenant";
+            this.Load += new System.EventHandler(this.frmNewInte_Load);
+            this.Controls.SetChildIndex(this.gbxIdContact, 0);
             this.Controls.SetChildIndex(this.gbxCoordonnees, 0);
             this.Controls.SetChildIndex(this.gbxIntervention, 0);
             this.Controls.SetChildIndex(this.btnAjouter, 0);
@@ -69,6 +72,8 @@
             this.gbxCoordonnees.PerformLayout();
             this.gbxIntervention.ResumeLayout(false);
             this.gbxIntervention.PerformLayout();
+            this.gbxIdContact.ResumeLayout(false);
+            this.gbxIdContact.PerformLayout();
             this.ResumeLayout(false);
 
         }
